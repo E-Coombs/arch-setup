@@ -3,6 +3,12 @@
 # core.sh - Core utility functions for arch-setup
 # Provides logging, TOML parsing, and common utilities
 
+# Prevent multiple sourcing
+if [[ -n "${_CORE_SH_LOADED:-}" ]]; then
+    return 0
+fi
+_CORE_SH_LOADED=1
+
 # Global variables
 declare -A CONFIG
 LOG_FILE=""
@@ -144,7 +150,7 @@ parse_toml() {
             local value="${BASH_REMATCH[2]}"
 
             # Trim whitespace from key
-            key="$(echo "$key" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+            key="$(echo "$key" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')" || true
 
             # Remove surrounding quotes from value
             value="${value#\"}"
@@ -156,7 +162,7 @@ parse_toml() {
             if [[ "$value" =~ ^\[(.*)\]$ ]]; then
                 value="${BASH_REMATCH[1]}"
                 # Remove quotes from array items and trim spaces
-                value=$(echo "$value" | sed 's/"//g' | sed "s/'//g" | sed 's/,/ /g' | tr -s ' ')
+                value=$(echo "$value" | sed 's/"//g' | sed "s/'//g" | sed 's/,/ /g' | tr -s ' ') || true
             fi
 
             # Store in associative array
