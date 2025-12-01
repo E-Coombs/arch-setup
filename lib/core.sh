@@ -34,25 +34,25 @@ init_logging() {
 log_info() {
     local msg="[INFO] $*"
     echo -e "\033[0;32m$msg\033[0m"
-    [[ -n "$LOG_FILE" ]] && echo "[$(date '+%Y-%m-%d %H:%M:%S')] $msg" >> "$LOG_FILE"
+    [[ -n "$LOG_FILE" ]] && echo "[$(date '+%Y-%m-%d %H:%M:%S')] $msg" >> "$LOG_FILE" || true
 }
 
 log_warn() {
     local msg="[WARN] $*"
     echo -e "\033[0;33m$msg\033[0m" >&2
-    [[ -n "$LOG_FILE" ]] && echo "[$(date '+%Y-%m-%d %H:%M:%S')] $msg" >> "$LOG_FILE"
+    [[ -n "$LOG_FILE" ]] && echo "[$(date '+%Y-%m-%d %H:%M:%S')] $msg" >> "$LOG_FILE" || true
 }
 
 log_error() {
     local msg="[ERROR] $*"
     echo -e "\033[0;31m$msg\033[0m" >&2
-    [[ -n "$LOG_FILE" ]] && echo "[$(date '+%Y-%m-%d %H:%M:%S')] $msg" >> "$LOG_FILE"
+    [[ -n "$LOG_FILE" ]] && echo "[$(date '+%Y-%m-%d %H:%M:%S')] $msg" >> "$LOG_FILE" || true
 }
 
 log_success() {
     local msg="[SUCCESS] $*"
     echo -e "\033[1;32m$msg\033[0m"
-    [[ -n "$LOG_FILE" ]] && echo "[$(date '+%Y-%m-%d %H:%M:%S')] $msg" >> "$LOG_FILE"
+    [[ -n "$LOG_FILE" ]] && echo "[$(date '+%Y-%m-%d %H:%M:%S')] $msg" >> "$LOG_FILE" || true
 }
 
 # Confirmation prompt for phase gates
