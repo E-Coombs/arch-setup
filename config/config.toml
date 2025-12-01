@@ -10,7 +10,7 @@ target_dir = "$HOME/.dotfiles"
 
 [modules]
 # List of modules to install
-# Available modules: base, hyprland, waybar
+# Available modules: base, hyprland, waybar, ly
 # Add more modules as you create them
 enabled = ["base", "hyprland", "waybar"]
 
@@ -26,3 +26,34 @@ auto_enable = true
 # Enable logging to file
 log_to_file = true
 log_dir = "$HOME/.local/share/arch-setup/logs"
+
+[ly]
+# Ly Display Manager Configuration
+# Enable automatic login (WARNING: Reduces security)
+# If enabled, ly will automatically log in as the specified user
+# Default: false
+enable_autologin = false
+
+# Username for automatic login
+# Required if enable_autologin = true
+# Example: "myuser"
+autologin_user = ""
+
+# Default session to launch
+# Should match a .desktop file in /usr/share/wayland-sessions/ or /usr/share/xsessions/
+# Default: "hyprland"
+default_session = "hyprland"
+
+# TTY number where ly will run
+# Must be different from other services using TTYs
+# Default: 2
+tty = 2
+
+# Enable PSX DOOM fire animation in background
+# Set to true for visual effect (uses more CPU)
+# Default: false
+animate = false
+
+# Hide the main box borders
+# Default: false
+hide_borders = false
