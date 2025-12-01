@@ -1,0 +1,28 @@
+# Arch Setup Configuration File
+# This file defines which modules to install and how to configure them
+
+[dotfiles]
+# Your dotfiles repository (use HTTPS URL)
+# Leave empty to skip dotfile management
+repo = "https://github.com/username/dotfiles"
+branch = "main"
+target_dir = "$HOME/.dotfiles"
+
+[modules]
+# List of modules to install
+# Available modules: base, hyprland, waybar
+# Add more modules as you create them
+enabled = ["base", "hyprland", "waybar"]
+
+[packages]
+# AUR helper to use (currently only paru is supported)
+aur_helper = "paru"
+
+[services]
+# Automatically enable services defined in modules
+auto_enable = true
+
+[logging]
+# Enable logging to file
+log_to_file = true
+log_dir = "$HOME/.local/share/arch-setup/logs"
